@@ -1,0 +1,41 @@
+
+@mixin ring($color, $size) {
+  $darken: darken($color, 20%);
+  $border: $size / 15;
+  height: $size;
+  width: $size;
+  border-radius: 66%;
+  box-shadow: inset 5px 5px 3px $darken, 5px 5px 3px $darken;
+  border: $border solid $color;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.circle {
+  @include ring(#ff7c35, 80px);
+}
+
+h1 {
+  display: inline-block;
+  margin: 50px 20px;
+}
+
+.big_ring {
+  @include ring(yellow, 300px);
+}
+
+
+$size: 45px;
+$margin: -33px;
+@for $i from 1 through 6 {
+  $size: $size + 15px;
+  .loop_rings#{$i} {
+    @include ring(black, $size);
+    margin-left: $margin;
+  }
+  $margin: $margin - 2px;
+}
+
+.loops {
+  margin-left: 33px;
+}
